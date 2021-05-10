@@ -16,9 +16,7 @@ $sql = "UPDATE course SET course_start_time=?, course_end_time=?, course_date=?,
     $stmt= $db_host->prepare($sql);
     try{
          $stmt->execute([$course_start_time, $course_end_time,  $course_date, $course_place, $course_title_ch, $course_description_ch, $course_inventory,$course_id]);
-         echo "課程修改成功";
-        //  sleep(1);
-        //  header("location: course-list.php");
+         echo "<script> alert('課程修改成功!!');parent.location.href='course-list.php'; </script>";
     }catch(PDOException $e){
         echo "課程修改失敗<br>";
         echo "Error: ".$e->getMessage();

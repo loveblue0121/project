@@ -19,10 +19,10 @@ $stmtCourse=$db_host->prepare($sql);
 
 try{
     $stmtCourse->execute([$course_name_ch, $course_start_time, $course_end_time, $course_date, $course_apply_end, $course_place, $course_title_ch, $course_description_ch, $course_inventory, $valid]);
-        echo "課程上架成功!!";
 
+    echo "<script> alert('課程上架成功!!');parent.location.href='course-list.php'; </script>";
 }catch(PDOException $e){
-echo "資料庫查詢失敗<br>";
+echo "課程上架失敗<br>";
 echo "Error: ".$e->getMessage();
     exit;
 }

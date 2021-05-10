@@ -173,16 +173,7 @@ $stmt=$db_host->prepare("SELECT * FROM course WHERE valid=1 ORDER BY course_id D
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="nc-icon nc-zoom-split"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
+            
             <ul class="navbar-nav">
               <li class="nav-item btn-rotate dropdown">
                 
@@ -195,8 +186,9 @@ $stmt=$db_host->prepare("SELECT * FROM course WHERE valid=1 ORDER BY course_id D
     <div class="card_bg content card mx-3">
       <div class="title_add col-md-12 d-flex justify-content-between mt-2">
           <h3>課程列表</h3>
-            <a href="add_course.php" class="btn btn-outline-primary btn-icon btn-round add" role="button"><i class="fas fa-plus"></i></a>  
-            <!-- <h3 class="description">Your content here</h3> -->
+          
+          <a href="add_course.php" class="btn btn-outline-primary btn-icon btn-round add" role="button"><i class="fas fa-plus"></i></a>
+            
       </div>
       <div class="row">
         <?php if($stmt->rowCount() > 0): ?>

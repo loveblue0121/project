@@ -152,28 +152,28 @@ try{
           <form action="do_add_course.php" method="post" id="addForm">
             <div class="form-group mt-2">
                 <label for="">課程名稱</label>
-                <input type="text" class="form-control" name="course_name_ch" required>
+                <input type="text" class="form-control" name="course_name_ch" id="course_name_ch" required>
             </div>
             <div class="form-group">
                 <label for="">課程日期</label>
-                <input type="date" class="form-control" name="course_date" required>
+                <input type="date" class="form-control" name="course_date" id="course_date" required>
             </div>
             
             <div class="form-group">
                 <label for="">課程開始時間</label>
-                <input type="time" class="form-control" name="course_start_time" required>
+                <input type="time" class="form-control" name="course_start_time" id="course_start_time" required>
             </div>
 
             <div class="form-group">
                 <label for="">課程結束時間</label>
-                <input type="time" class="form-control" name="course_end_time" required>
+                <input type="time" class="form-control" name="course_end_time" id="course_end_time" required>
             </div>
 
             
             
             <div class="form-group">
                 <label for="">報名截止時間</label>
-                <input type="datetime-local" class="form-control" name="course_apply_end" required>
+                <input type="datetime-local" class="form-control" name="course_apply_end" id="course_apply_end" required>
             </div>
 
             <div class="form-group">
@@ -188,7 +188,7 @@ try{
 
             <div class="form-group mt-2">
                 <label for="">課程文案標題</label>
-                <input type="text" class="form-control" name="course_title_ch">
+                <input type="text" class="form-control" name="course_title_ch" id="course_title_ch" required>
             </div>
 
             <div class="form-group mt-2">
@@ -198,14 +198,19 @@ try{
 
             <div class="form-group mt-2">
                 <label for="">課程人數限制</label>
-                <input type="text" class="form-control" name="course_inventory">
+                <input type="text" class="form-control" name="course_inventory" id="course_inventory" required>
             </div>
             <input type="hidden" name="valid" value=1>
+            <div class="alert alert-light text-danger" role="alert" id="errMsg">
+  
+            </div>
+
             <div class="btnWidth d-flex justify-content-end">
-                 <input type="submit" class="btn btn-primary" value="新增" id="add">   
+                 <button type="button" class="btn btn-primary" id="add">新增</button>
             </div>
             
             </form>
+            
             
 
           </div>  
@@ -218,18 +223,65 @@ try{
       </footer>
     </div>
   </div>
+  <script
+			  src="https://code.jquery.com/jquery-3.6.0.min.js"
+			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			  crossorigin="anonymous"></script>
     <script>
-        let add=document.querySelector("#add");
-        add.onclick=function(){
-            let addForm=document.querySelector("#addForm");
-            let formgroup=document.querySelector(".form-group")
-            if(formgroup.length ==0){
-              alert("請填入資料")
-            }else{
-              addForm.submit();
-            }
+        let add=$("#add");
+        let course_name_ch=$("#course_name_ch");
+        let course_date=$("#course_date");
+        let course_start_time=$("#course_start_time");
+        let course_end_time=$("#ccourse_end_time");
+        let course_apply_end=$("#course_apply_end");
+        let course_title_ch=$("#course_title_ch");
+        let course_inventory=$("#course_inventory");
+
+        add.on("click", function(){
+          let addForm=$("#addForm");
+          doAddCourse=1;
+          if(course_name_ch.val()==""){
+            errMsg="請輸入課程名稱";
+            doAddCourse=0;
+          }else if(course_date.val()==""){
+            errMsg="請輸入課程日期";
+            doAddCourse=0;
+          }else if(course_start_time.val()==""){
+            errMsg="請輸入課程開始時間";
+            doAddCourse=0;
+          }else if(course_end_time.val()==""){
+            errMsg="請輸入課程結束時間";
+            doAddCourse=0;
+          }else if(course_apply_end.val()==""){
+            errMsg="請輸入報名截止時間";
+            doAddCourse=0;
+          }else if(course_title_ch.val()==""){
+            errMsg="請輸入課程文案標題";
+            doAddCourse=0;
+          }else if(course_inventory.val()==""){
+            errMsg="請輸入課程人數限制";
+            doAddCourse=0;
+          }
             
-        }
+          if(doAddCourse===0){
+            $("#errMsg").text(errMsg)
+          }else{
+            addForm.submit();
+          }
+        })
+
+
+
+        // add.onclick=function(){
+        //     let addForm=$("#addForm");
+        //     let formgroup=$(".form-group")
+        //     if(formgroup.length ==0){
+        //       alert("請填入資料")
+        //     }else{
+        //       addForm.submit();
+        //     }
+            
+        // }
 
     </script>
 </body>
