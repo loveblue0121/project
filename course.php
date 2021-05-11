@@ -1,5 +1,6 @@
 <?php
-require_once("pdo-connect.php");
+require_once("check-login.php");
+require_once("pdo-connect-project-db.php");
 $course_id=$_GET["course_id"];
 $stmt=$db_host->prepare("SELECT * FROM course WHERE course_id=:course_id");
 $stmt->execute(
@@ -38,7 +39,9 @@ try{
   <link href="./assets/demo/demo.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <style>
-    
+    .username{
+        width: 100%;
+      }
   </style>
 </head>
 
@@ -80,7 +83,7 @@ try{
             </a>
           </li>
           <li class="active">
-            <a href="javascript:;">
+            <a href="course-list.php">
               <i class="nc-icon nc-palette"></i>
               <p>課程管理</p>
             </a>
@@ -116,23 +119,16 @@ try{
     <div class="main-panel" style="height: 100vh">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
+        <div class="container-fluid username d-flex">
+          <div class="navbar-wrapper username">
             <a class="navbar-brand" href="">課程修改</a>
+            <div class="username d-flex justify-content-end align-items-center">
+              Hi!  <?=$_SESSION["account"]?>
+              <a class="btn btn-danger" href="doLogout.php">登出</a>
+            </div>
           </div>
 
-          <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="nc-icon nc-zoom-split"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
+          
         </div>
       </nav>
       <!-- End Navbar -->

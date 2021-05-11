@@ -2,7 +2,7 @@
 <td>$row["course_description_ch"] </td> -->
 
 <?php
-require_once("pdo-connect.php");
+require_once("pdo-connect-project-db.php");
 $stmt=$db_host->prepare("SELECT * from course WHERE valid=1 ORDER BY course_id DESC");
 
 try{
@@ -300,7 +300,7 @@ while($rowPlace= $stmtPlace->fetch()) {
             .done(function( data ) {
               console.log(data)
               if(data.status===1){ //狀態碼=1(刪除成功)時顯示訊息
-                $("#item"+deleteId).remove();
+                $("<?=$row["course_id"]?>"+deleteId).remove();
                 Swal.fire(
                   '成功!!!',
                   '恭喜你擺脫它了',

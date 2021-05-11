@@ -1,8 +1,8 @@
 <!-- <td>$row["course_title_ch"] </td>
 <td>$row["course_description_ch"] </td> -->
-
+<?php require_once("check-login.php"); ?>
 <?php
-require_once("pdo-connect.php");
+require_once("pdo-connect-project-db.php");
 $stmt=$db_host->prepare("SELECT * from course WHERE valid=1 ORDER BY course_id DESC");
 
 try{
@@ -78,6 +78,9 @@ $stmt=$db_host->prepare("SELECT * FROM course WHERE valid=1 ORDER BY course_id D
       }
       .btn-icon:hover{
         width: 5rem;
+      }
+      .username{
+        width: 100%;
       }
   </style>
 </head>
@@ -156,30 +159,15 @@ $stmt=$db_host->prepare("SELECT * FROM course WHERE valid=1 ORDER BY course_id D
     <div class="main-panel" style="height: 100vh">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
-            </div>
+        <div class="container-fluid username d-flex">
+          <div class="navbar-wrapper username">
             <a class="navbar-brand" href="">課程管理</a>
+            <div class="username d-flex justify-content-end align-items-center">
+              Hi!  <?=$_SESSION["account"]?>
+              <a class="btn btn-danger" href="doLogout.php">登出</a>
+            </div>
           </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            
-            <ul class="navbar-nav">
-              <li class="nav-item btn-rotate dropdown">
-                
-              </li>
-            </ul>
-          </div>
+      
         </div>
       </nav>
       <!-- End Navbar -->

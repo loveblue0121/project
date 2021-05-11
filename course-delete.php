@@ -1,5 +1,5 @@
 <?php
-    require_once("pdo-connect.php");
+    require_once("pdo-connect-project-db.php");
     $id=$_GET["course_id"];
     //使用刪除按鈕將valid欄位改為0
     $sql = "UPDATE course SET valid=0 WHERE course_id=?";

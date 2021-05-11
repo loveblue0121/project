@@ -1,5 +1,6 @@
 <?php
-require_once ("pdo-connect.php");
+require_once("check-login.php");
+require_once("pdo-connect-project-db.php");
 $stmt=$db_host->prepare("SELECT * from course");
 $stmt->execute();
 
@@ -36,6 +37,9 @@ try{
   <link href="./assets/demo/demo.css" rel="stylesheet" />
   <style>
       .btnWidth{
+        width: 100%;
+      }
+      .username{
         width: 100%;
       }
   </style>
@@ -79,7 +83,7 @@ try{
             </a>
           </li>
           <li class="active">
-            <a href="javascript:;">
+            <a href="course-list.php">
               <i class="nc-icon nc-palette"></i>
               <p>課程管理</p>
             </a>
@@ -114,34 +118,13 @@ try{
     <div class="main-panel" >
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
-            </div>
+        <div class="container-fluid username d-flex">
+          <div class="navbar-wrapper username">
             <a class="navbar-brand" href="">新增課程</a>
-          </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="nc-icon nc-zoom-split"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
-
+            <div class="username d-flex justify-content-end align-items-center">
+              Hi!  <?=$_SESSION["account"]?>
+              <a class="btn btn-danger" href="doLogout.php">登出</a>
+            </div>
           </div>
         </div>
       </nav>
