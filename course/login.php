@@ -2,7 +2,7 @@
 session_start();
 //如果$_SESSION存在使用者資料 則直接跳轉course-list.php頁面
 if(isset($_SESSION["account"])){
-    header("location: course-list.php");
+    header("location: course_list.php");
 }
 ?>
 <!doctype html>

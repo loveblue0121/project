@@ -1,8 +1,8 @@
 <!-- <td>$row["course_title_ch"] </td>
 <td>$row["course_description_ch"] </td> -->
-<?php require_once("check-login.php"); ?>
+<?php require_once("check_login.php"); ?>
 <?php
-require_once("pdo-connect-project-db.php");
+require_once("../project_pdo.php");
 $stmt=$db_host->prepare("SELECT * from course WHERE valid=1 ORDER BY course_id DESC");
 
 try{
@@ -53,7 +53,7 @@ $stmt=$db_host->prepare("SELECT * FROM course WHERE valid=1 ORDER BY course_id D
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="./assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -61,10 +61,10 @@ $stmt=$db_host->prepare("SELECT * FROM course WHERE valid=1 ORDER BY course_id D
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
-  <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="./assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="./assets/demo/demo.css" rel="stylesheet" />
+  <link href="../assets/demo/demo.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <style>
       .title_add{
@@ -214,7 +214,7 @@ $stmt=$db_host->prepare("SELECT * FROM course WHERE valid=1 ORDER BY course_id D
                 <td><?= $row["item_quantity"] ?></td>
                 <td><?= $row["course_createdate"] ?></td>
                 <td><a href="course.php?course_id=<?=$course_id?>" class="btn btn-success" role="button"><i class="fas fa-edit"></i>編輯</a>
-                <a href="course-delete.php?course_id=<?=$course_id?>" class="btn btn-danger" role="button" ><i class="fas fa-trash-alt"></i> 刪除</a></td>
+                <a href="course_delete.php?course_id=<?=$course_id?>" class="btn btn-danger" role="button" ><i class="fas fa-trash-alt"></i> 刪除</a></td>
               </tr>
                 <?php } ?>
             </tbody>
@@ -231,7 +231,7 @@ $stmt=$db_host->prepare("SELECT * FROM course WHERE valid=1 ORDER BY course_id D
                 <?php for($i=1;$i<=$pageCount;$i++){ ?>
                   <li class="page-item <?php
                   if($page==$i)echo "active";
-                  ?>"><a class="page-link" href="course-list.php?p=<?=$i?>"><?=$i?></a></li>
+                  ?>"><a class="page-link" href="course_list.php?p=<?=$i?>"><?=$i?></a></li>
                 <?php } ?>
               </ul> 
             </div>

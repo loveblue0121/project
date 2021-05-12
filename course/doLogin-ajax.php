@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("pdo-connect-project-db.php");
+require_once("../project_pdo.php");
  $account=$_POST["account"];
 // $password=$_POST["password"];
 

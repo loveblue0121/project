@@ -1,5 +1,5 @@
 <?php
-require_once("pdo-connect-project-db.php");
+require_once("../project_pdo.php");
 $course_name_ch=$_POST["course_name_ch"];
 $course_start_time=$_POST["course_start_time"];
 $course_end_time=$_POST["course_end_time"];
@@ -20,7 +20,7 @@ $stmtCourse=$db_host->prepare($sql);
 try{
     $stmtCourse->execute([$course_name_ch, $course_start_time, $course_end_time, $course_date, $course_apply_end, $course_place, $course_title_ch, $course_description_ch, $course_inventory, $valid]);
 
-    echo "<script> alert('課程上架成功!!');parent.location.href='course-list.php'; </script>";
+    echo "<script> alert('課程上架成功!!');parent.location.href='course_list.php'; </script>";
 }catch(PDOException $e){
 echo "課程上架失敗<br>";
 echo "Error: ".$e->getMessage();

@@ -1,6 +1,6 @@
 <?php
-require_once("check-login.php");
-require_once("pdo-connect-project-db.php");
+require_once("check_login.php");
+require_once("../project_pdo.php");
 $course_id=$_GET["course_id"];
 $stmt=$db_host->prepare("SELECT * FROM course WHERE course_id=:course_id");
 $stmt->execute(
@@ -25,18 +25,18 @@ try{
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
-  <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="./assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="./assets/demo/demo.css" rel="stylesheet" />
+  <link href="../assets/demo/demo.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <style>
     .username{
@@ -83,7 +83,7 @@ try{
             </a>
           </li>
           <li class="active">
-            <a href="course-list.php">
+            <a href="course_list.php">
               <i class="nc-icon nc-palette"></i>
               <p>課程管理</p>
             </a>
@@ -137,7 +137,7 @@ try{
           <div class="card col-lg-5">
             <!-- <h3 class="mt-2">編輯課程</h3> -->
             <?php if($stmt->rowCount()>0): ?>
-            <form action="course-edit.php" method="post" id="editForm">
+            <form action="course_edit.php" method="post" id="editForm">
             <?php
                 while($row = $stmt->fetch()) {
                     $course_id=$row["course_id"];

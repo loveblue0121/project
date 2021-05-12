@@ -2,7 +2,7 @@
 <td>$row["course_description_ch"] </td> -->
 
 <?php
-require_once("pdo-connect-project-db.php");
+require_once("../project_pdo.php");
 $stmt=$db_host->prepare("SELECT * from course WHERE valid=1 ORDER BY course_id DESC");
 
 try{

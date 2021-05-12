@@ -3,7 +3,7 @@ session_start();
 //檢查name及password是否存在，存在則執行
 try{
     if(isset($_POST["account"])&& isset($_POST["password"])){
-        require_once("pdo-connect-project-db.php");
+        require_once("../project_pdo.php");
         $account=$_POST["account"];
         $password=$_POST["password"];
         
@@ -17,7 +17,7 @@ try{
                 $_SESSION["account"]=$row["admin_account"];
                 $_SESSION["admin_password"]=$row["admin_password"];
             }
-            header("location: course-list.php");
+            header("location: course_list.php");
         }else{
             $alert="<script> alert('帳號或密碼錯誤!');parent.location.href='login.php'; </script>";
             echo $alert;

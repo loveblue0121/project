@@ -1,5 +1,5 @@
 <?php
-require_once("pdo-connect-project-db.php");
+require_once("../project_pdo.php");
 $course_id=$_POST["course_id"];
 //$course_name_ch=$_POST["course_name_ch"];
 $course_start_time=$_POST["course_start_time"];

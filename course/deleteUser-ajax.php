@@ -1,5 +1,5 @@
 <?php
-require_once("../pdo-connect.php");
+require_once("../project_pdo.php");
     $id=$_POST["id"];
     //使用刪除按鈕將valid欄位改為0
     $sql = "UPDATE users SET valid=0 WHERE id=?";
